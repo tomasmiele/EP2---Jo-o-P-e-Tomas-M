@@ -19,9 +19,16 @@ def sorteia_pais(paises):
     return random.choice(chaves)
 
 #distância haversine
-def haversine(r, phi1, lambda1, phi2, lambda2):
-    d = (2*r)*(math.asin(math.sqrt((((math.sin(math.radians((phi2-phi1)/2)))**2) + math.cos(math.radians(phi1)) * math.cos(math.radians(phi2)) * ((math.sin(math.radians((lambda2-lambda1)/2)))**2)))))
-    return d
+def haversine(raio, phi1, lambda1, phi2, lambda2):
+    r = 2 * raio
+
+    senos = (((math.sin(math.radians((phi2-phi1)/2)))^2) + math.cos(math.radians(phi1)) * math.cos(math.radians(phi2)) * ((math.sin(math.radians((lambda2-lambda1)/2)))^2))**(1/2)
+
+    arco_seno = math.asin(senos)
+
+    distancia = r * arco_seno
+
+    return distancia
 
 #adicionando em uma lista ordenada
 def adiciona_em_ordem(pais, dist, lista_p):
