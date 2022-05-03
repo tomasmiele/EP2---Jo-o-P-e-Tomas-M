@@ -22,7 +22,7 @@ def sorteia_pais(paises):
 def haversine(raio, phi1, lambda1, phi2, lambda2):
     r = 2 * raio
 
-    senos = (((math.sin(math.radians((phi2-phi1)/2)))^2) + math.cos(math.radians(phi1)) * math.cos(math.radians(phi2)) * ((math.sin(math.radians((lambda2-lambda1)/2)))^2))**(1/2)
+    senos = (((math.sin(math.radians((phi2-phi1)/2)))**2) + math.cos(math.radians(phi1)) * math.cos(math.radians(phi2)) * ((math.sin(math.radians((lambda2-lambda1)/2)))**2))**(1/2)
 
     arco_seno = math.asin(senos)
 
