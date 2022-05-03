@@ -3816,3 +3816,5 @@ DADOS = {
     }
   }
 }
+
+DADOS_CONVERTIDOS = normaliza(DADOS)
