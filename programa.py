@@ -3845,7 +3845,7 @@ while tentativas != 0:
   if palpite == 'desisto':
     desistir = input('Tem certeza que deseja desistir da rodada? [s|n] ')
     if desistir == 'n':
-      palpite = input('Qual o seu palpite? ')
+      continue
     elif desistir == 's':
       print('Que deselegante desistir, o pais era: ', pais_sorteado)
       break
