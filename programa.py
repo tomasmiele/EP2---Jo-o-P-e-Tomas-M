@@ -13,6 +13,7 @@ DADOS_CONVERTIDOS = normaliza(dicio_paises['DADOS'])
 tentativas = 20
 distancias = [] 
 dicas = []
+cores = []
 
 
 pais_sorteado = sorteia_pais(DADOS_CONVERTIDOS)
@@ -70,6 +71,31 @@ while tentativas != 0:
       dica_opcao = int(input(ops))
     else:
       print('>>> Infelizmente, acabou seu estoque de dicas! <<<')
+    if dica_opcao == 0:
+      continue
+    elif dica_opcao == 1:
+      soma_cores = 0
+      for valor in DADOS_CONVERTIDOS[pais_sorteado]['bandeira'].values():
+        soma_cores += valor
+      if soma_cores > 0:
+        tentativas -= 4
+        for chave in  DADOS_CONVERTIDOS[pais_sorteado]['bandeira'].keys():
+          if  DADOS_CONVERTIDOS[pais_sorteado]['bandeira'][chave] > 0:
+            cores.append(chave)
+            DADOS_CONVERTIDOS[pais_sorteado]['bandeira'][chave] = 0
+            break
+        if len(cores) == 1:
+          cores_bandeira = '-Cores d bandeira: ' + str(cores[0])
+          dicas.append(cores_bandeira)
+          aonde_cores = dicas.index{cores_bandeira}
+        elif len(cores) > 1:
+          cores_bandeira = '-Cores d bandeira: ' + str(cores[0])
+          for i in range(1, len(cores)):
+            cores_bandeira = cores_bandeira + ', ' + str(cores[i]) 
+          dicas[aonde_cores] = cores_bandeira
+      elif soma_cores == 0:
+        print('Cores esgotadas!')
+        continue
     #fazer as dicas
   #elif palpite == 'inventario':
     #fazer o inventario
