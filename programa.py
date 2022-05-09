@@ -27,6 +27,10 @@ while tentativas != 0:
     print('\nDistâncias:')
     for i in range(len(distancias)):
       print(distancias[i][1], 'km ->', distancias[i][0])
+
+  print('\nDicas: ')
+  for i in range(len(dicas)):
+    print(dicas[i])
   
   print('\nVocê tem', tentativas, 'tentativa(s) \n')
   palpite = input('Qual o seu palpite? ')
@@ -85,11 +89,11 @@ while tentativas != 0:
             DADOS_CONVERTIDOS[pais_sorteado]['bandeira'][chave] = 0
             break
         if len(cores) == 1:
-          cores_bandeira = '-Cores d bandeira: ' + str(cores[0])
+          cores_bandeira = '-Cores da bandeira: ' + str(cores[0])
           dicas.append(cores_bandeira)
-          aonde_cores = dicas.index{cores_bandeira}
+          aonde_cores = dicas.index(cores_bandeira)
         elif len(cores) > 1:
-          cores_bandeira = '-Cores d bandeira: ' + str(cores[0])
+          cores_bandeira = '-Cores da bandeira: ' + str(cores[0])
           for i in range(1, len(cores)):
             cores_bandeira = cores_bandeira + ', ' + str(cores[i]) 
           dicas[aonde_cores] = cores_bandeira
