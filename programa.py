@@ -14,11 +14,13 @@ tentativas = 20
 distancias = [] 
 dicas = []
 cores = []
-
+letras_restritas = []
 
 pais_sorteado = sorteia_pais(DADOS_CONVERTIDOS)
 latitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['latitude']
 longitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['longitude']
+capital = DADOS_CONVERTIDOS[pais_sorteado]['capital']
+tamanho_capital = len(capital)
 
 print(pais_sorteado)
 
@@ -75,6 +77,7 @@ while tentativas != 0:
       dica_opcao = int(input(ops))
     else:
       print('>>> Infelizmente, acabou seu estoque de dicas! <<<')
+      dica_opcao = 0
     if dica_opcao == 0:
       continue
     elif dica_opcao == 1:
@@ -99,6 +102,29 @@ while tentativas != 0:
           dicas[aonde_cores] = cores_bandeira
       elif soma_cores == 0:
         print('Cores esgotadas!')
+        continue
+    elif dica_opcao == 2:
+      if tamanho_capital > 0:
+        tentativas -= 3
+        letra_sorteada = sorteia_letra(capital, letras_restritas)
+        conta_letras = 0
+        for i in range(len(capital)):
+          if capital[i].lower() == letra_sorteada:
+              conta_letras += 1
+        tamanho_capital -= conta_letras
+        letras_restritas.append(letra_sorteada)
+        letras_capital = '- Letras da capital: '
+        if len(letras_restritas) == 1:
+          letras_capital += letras_restritas[0]
+          dicas.append(letras_capital)
+          aonde_letra_capital = dicas.index(letras_capital)
+        elif len(letras_restritas) > 1:
+          letras_capital += letras_restritas[0]
+          for i in range(1, len(letras_restritas)):
+            letras_capital = letras_capital + ', ' + str(letras_restritas[i])
+          dicas[aonde_letra_capital] = letras_capital
+      elif tamanho_capital == 0:
+        print('Letras esgotadas!')
         continue
     #fazer as dicas
   #elif palpite == 'inventario':
