@@ -8,11 +8,7 @@ dicio_paises = json.loads(texto)
 
 raio_terra = 6371
 
-
-
-DADOS_CONVERTIDOS = normaliza(dicio_paises)
-print(DADOS_CONVERTIDOS)
-
+DADOS_CONVERTIDOS = normaliza(dicio_paises['DADOS'])
 
 tentativas = 20
 distancias = []
@@ -42,7 +38,7 @@ while tentativas != 0:
     if desistir == 'n':
       continue
     elif desistir == 's':
-      print('Que deselegante desistir, o pais era: ', pais_sorteado)
+      print('Que deselegante desistir, o pais era:', pais_sorteado)
       break
     else:
       print('país desconhecido \n')
@@ -68,5 +64,3 @@ while tentativas != 0:
       break
   else:
     print('país desconhecido')
-    
-
