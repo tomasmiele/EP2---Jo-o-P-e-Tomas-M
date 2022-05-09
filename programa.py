@@ -11,7 +11,9 @@ raio_terra = 6371
 DADOS_CONVERTIDOS = normaliza(dicio_paises['DADOS'])
 
 tentativas = 20
-distancias = []
+distancias = [] 
+dicas = []
+
 
 pais_sorteado = sorteia_pais(DADOS_CONVERTIDOS)
 latitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['latitude']
@@ -42,7 +44,32 @@ while tentativas != 0:
       break
     else:
       print('país desconhecido \n')
-  #elif palpite == 'dica':
+  elif palpite == 'dica':
+    ops = '0'
+    print('\nMercado de Dicas')
+    print('---------------------------------------------')
+    if tentativas > 4:
+      print('1. Cor da bandeira - custa 4 tentativas')
+      ops = ops + '|1'
+    if tentativas > 3:
+      print('2. Letra da capital - custa 3 tentativas')
+      ops = ops + '|2'
+    if tentativas > 6:
+      print('3. Área - custa 6 tentativas')
+      ops = ops + '|3'
+    if tentativas > 5:
+      print('4. População - custa 5 tentativas')
+      ops = ops + '|4'
+    if tentativas > 7:
+      print('5. Continente - custa 7 tentativas')
+      ops = ops + '|5'
+    print('0. Sem dica')
+    print('---------------------------------------------')
+    if len(ops) > 1:
+      ops = 'Escolha sua opção [' + ops + ']: '
+      dica_opcao = int(input(ops))
+    else:
+      print('>>> Infelizmente, acabou seu estoque de dicas! <<<')
     #fazer as dicas
   #elif palpite == 'inventario':
     #fazer o inventario
