@@ -21,6 +21,7 @@ latitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['latitude']
 longitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['longitude']
 capital = DADOS_CONVERTIDOS[pais_sorteado]['capital']
 tamanho_capital = len(capital)
+dica3_ja_foi_escolhida = False
 
 print(pais_sorteado)
 
@@ -61,7 +62,7 @@ while tentativas != 0:
     if tentativas > 3:
       print('2. Letra da capital - custa 3 tentativas')
       ops = ops + '|2'
-    if tentativas > 6:
+    if tentativas > 6 and dica3_ja_foi_escolhida == False:
       print('3. Área - custa 6 tentativas')
       ops = ops + '|3'
     if tentativas > 5:
@@ -126,6 +127,14 @@ while tentativas != 0:
       elif tamanho_capital == 0:
         print('Letras esgotadas!')
         continue
+    elif dica_opcao == 3:
+      area = '- Área: ' + str(DADOS_CONVERTIDOS[pais_sorteado]['area']) + ' km2'
+      if dica3_ja_foi_escolhida == True:
+        print('Opção inválida')
+      else:
+        dica3_ja_foi_escolhida = True
+        dicas.append(area)
+        tentativas -= 6
     #fazer as dicas
   #elif palpite == 'inventario':
     #fazer o inventario
