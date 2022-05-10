@@ -23,6 +23,7 @@ capital = DADOS_CONVERTIDOS[pais_sorteado]['capital']
 tamanho_capital = len(capital)
 dica3_ja_foi_escolhida = False
 dica4_ja_foi_escolhida = False
+dica5_ja_foi_escolhida = False
 
 print(pais_sorteado)
 
@@ -69,7 +70,7 @@ while tentativas != 0:
     if tentativas > 5 and dica4_ja_foi_escolhida == False:
       print('4. População - custa 5 tentativas')
       ops = ops + '|4'
-    if tentativas > 7:
+    if tentativas > 7 and dica5_ja_foi_escolhida == False:
       print('5. Continente - custa 7 tentativas')
       ops = ops + '|5'
     print('0. Sem dica')
@@ -144,6 +145,14 @@ while tentativas != 0:
         dica4_ja_foi_escolhida = True
         dicas.append(populacao)
         tentativas -= 5
+    elif dica_opcao == 5:
+      continente = '- Continente: ' + str(DADOS_CONVERTIDOS[pais_sorteado]['continente']) 
+      if dica5_ja_foi_escolhida == True:
+        print('Opção inválida')
+      else:
+        dica5_ja_foi_escolhida = True
+        dicas.append(continente)
+        tentativas -= 7
     #fazer as dicas
   #elif palpite == 'inventario':
     #fazer o inventario
