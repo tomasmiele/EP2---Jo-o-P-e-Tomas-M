@@ -22,6 +22,7 @@ longitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['longitude']
 capital = DADOS_CONVERTIDOS[pais_sorteado]['capital']
 tamanho_capital = len(capital)
 dica3_ja_foi_escolhida = False
+dica4_ja_foi_escolhida = False
 
 print(pais_sorteado)
 
@@ -65,7 +66,7 @@ while tentativas != 0:
     if tentativas > 6 and dica3_ja_foi_escolhida == False:
       print('3. Área - custa 6 tentativas')
       ops = ops + '|3'
-    if tentativas > 5:
+    if tentativas > 5 and dica4_ja_foi_escolhida == False:
       print('4. População - custa 5 tentativas')
       ops = ops + '|4'
     if tentativas > 7:
@@ -135,6 +136,14 @@ while tentativas != 0:
         dica3_ja_foi_escolhida = True
         dicas.append(area)
         tentativas -= 6
+    elif dica_opcao == 4:
+      populacao = '- População: ' + str(DADOS_CONVERTIDOS[pais_sorteado]['populacao']) + ' habitantes'
+      if dica4_ja_foi_escolhida == True:
+        print('Opção inválida')
+      else:
+        dica4_ja_foi_escolhida = True
+        dicas.append(populacao)
+        tentativas -= 5
     #fazer as dicas
   #elif palpite == 'inventario':
     #fazer o inventario
