@@ -1,2 +1,4 @@
 # EP2---Jo-o-P-e-Tomas-M
 Trabalho da disciplina Design de Software, da faculdade Insper. Jogo para adivinhar o país sorteado
+
+O objetivo desse jogo é acertar um país que será sorteado pelo programa de forma aleatória, com isso o jogador terá 20 tentativas de adivinhar qual o país foi sorteado. Ao informar para o jogo o seu palpite, o programa retornará, ao jogador qual a distância entre o país sorteado e o país estimado. Além de informar ao programa o seu palpite, o jogador poderá pedir uma dica, entre qual o continete que o país se encontra, qual a população do país, qual a sua área, letras que compõem o nome da capital e cores da bandeira. Ademais, caso o jogador queira ver como está o seu inventário de dicas e distâncias, basta digitar 'inventario' no palpite que o programa imprimirá essas informações. Por fim, se estiver muito complicado acertar o país o jogador pode optar pela desistência daquela rodada.
