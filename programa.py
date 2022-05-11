@@ -39,18 +39,20 @@ while continuar_jogando == True:
   dica4_ja_foi_escolhida = False
   dica5_ja_foi_escolhida = False
   ganhou = False
+  inventario = True
 
-  print(pais_sorteado)
+  print('\n', pais_sorteado)
 
   while tentativas != 0:
-    if distancias != []:
+    if inventario == False:
       print('\nDistâncias:')
       for i in range(len(distancias)):
         print(distancias[i][1], 'km ->', distancias[i][0])
-
-    print('\nDicas: ')
-    for i in range(len(dicas)):
-      print(dicas[i])
+  
+      print('\nDicas: ')
+      for i in range(len(dicas)):
+        print(dicas[i])
+    inventario = False
 
     print('\nVocê tem', tentativas, 'tentativa(s) \n')
     palpite = input('Qual o seu palpite? ').lower()
@@ -168,8 +170,15 @@ while continuar_jogando == True:
           dica5_ja_foi_escolhida = True
           dicas.append(continente)
           tentativas -= 7
-    #elif palpite == 'inventario':
-      #fazer o inventario
+    elif palpite == 'inventario':
+      inventario  = True
+      print('\nDistâncias:')
+      for i in range(len(distancias)):
+        print(distancias[i][1], 'km ->', distancias[i][0])
+  
+      print('\nDicas: ')
+      for i in range(len(dicas)):
+        print(dicas[i])
     elif esta == True:
       latitude_palpite = DADOS_CONVERTIDOS[palpite]['geo']['latitude']
       longitude_palpite = DADOS_CONVERTIDOS[palpite]['geo']['longitude']
