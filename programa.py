@@ -33,7 +33,6 @@ while continuar_jogando == True:
   letras_restritas = []
 
   pais_sorteado = sorteia_pais(DADOS_CONVERTIDOS)
-  pais_sorteado = 'sri lanka'
   latitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['latitude']
   longitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['longitude']
   for chave in  DADOS_CONVERTIDOS[pais_sorteado]['bandeira'].keys():
