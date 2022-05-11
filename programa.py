@@ -1,5 +1,6 @@
 from funcoes import *
 import json
+import random
 
 with open('paises.json', 'r') as arquivo:
   texto = arquivo.read()
@@ -28,11 +29,16 @@ while continuar_jogando == True:
   distancias = [] 
   dicas = []
   cores = []
+  cores_sorteadas = []
   letras_restritas = []
 
   pais_sorteado = sorteia_pais(DADOS_CONVERTIDOS)
+  pais_sorteado = 'sri lanka'
   latitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['latitude']
   longitude_pais_sorteado = DADOS_CONVERTIDOS[pais_sorteado]['geo']['longitude']
+  for chave in  DADOS_CONVERTIDOS[pais_sorteado]['bandeira'].keys():
+    if DADOS_CONVERTIDOS[pais_sorteado]['bandeira'][chave] > 0 and chave != 'outras':
+      cores.append(chave)
   capital = DADOS_CONVERTIDOS[pais_sorteado]['capital']
   tamanho_capital = len(capital)
   dica3_ja_foi_escolhida = False
@@ -101,26 +107,20 @@ while continuar_jogando == True:
       if dica_opcao == 0:
         continue
       elif dica_opcao == 1:
-        soma_cores = 0
-        for valor in DADOS_CONVERTIDOS[pais_sorteado]['bandeira'].values():
-          soma_cores += valor
-        if soma_cores > 0:
+        if len(cores) > 0:
           tentativas -= 4
-          for chave in  DADOS_CONVERTIDOS[pais_sorteado]['bandeira'].keys():
-            if  DADOS_CONVERTIDOS[pais_sorteado]['bandeira'][chave] > 0:
-              cores.append(chave)
-              DADOS_CONVERTIDOS[pais_sorteado]['bandeira'][chave] = 0
-              break
-          if len(cores) == 1:
-            cores_bandeira = '-Cores da bandeira: ' + str(cores[0])
+          cores_sorteadas.append(random.choice(cores))
+          cores.remove(cores_sorteadas[-1])
+          if len(cores_sorteadas) == 1:
+            cores_bandeira = '-Cores da bandeira: ' + str(cores_sorteadas[0])
             dicas.append(cores_bandeira)
             aonde_cores = dicas.index(cores_bandeira)
-          elif len(cores) > 1:
-            cores_bandeira = '-Cores da bandeira: ' + str(cores[0])
-            for i in range(1, len(cores)):
-              cores_bandeira = cores_bandeira + ', ' + str(cores[i]) 
+          elif len(cores_sorteadas) > 1:
+            cores_bandeira = '-Cores da bandeira: ' + str(cores_sorteadas[0])
+            for i in range(1, len(cores_sorteadas)):
+              cores_bandeira = cores_bandeira + ', ' + str(cores_sorteadas[i]) 
             dicas[aonde_cores] = cores_bandeira
-        elif soma_cores == 0:
+        elif len(cores) == 0:
           print('Cores esgotadas!')
           continue
       elif dica_opcao == 2:
