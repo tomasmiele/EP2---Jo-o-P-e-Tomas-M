@@ -16,14 +16,16 @@ class bcolors:
   roxo = '\033[0;35m'
   vermelho = '\033[0;31m'
   amarelo = '\033[1;33m'
-  azul_claro = '\033[1;34m'
+  azul_claro = '\033[1;36m'
+  cor_normal = '\033[0m'
+
 print(' ============================ ')
 print('|                            |')
 print('| BEM VINDO AO INSPER PAÍSES |')
 print('|                            |')
 print(' ==== DESIGN DE SOFTWARE ==== ')
 print('\nComandos:')
-print('    dica       - entra no mercado de dicas')
+print('\n    dica       - entra no mercado de dicas')
 print('    desisto    - desiste da rodada')
 print('    inventario - exibe sua posição')
 
@@ -51,20 +53,34 @@ while continuar_jogando == True:
   ganhou = False
   inventario = True
 
-  print('\n', pais_sorteado)
-
   while tentativas != 0:
+    if tentativas > 10:
+      tenta_cor = bcolors.azul_claro + str(tentativas) + bcolors.cor_normal
+    elif tentativas <= 10 and tentativas > 5:
+      tenta_cor = bcolors.amarelo+ str(tentativas) + bcolors.cor_normal
+    elif tentativas <= 5:
+      tenta_cor = bcolors.vermelho + str(tentativas) + bcolors.cor_normal
+
     if inventario == False:
       print('\nDistâncias:')
       for i in range(len(distancias)):
-        print(distancias[i][1], 'km ->', distancias[i][0])
+        if distancias[i][1] >= 10000:
+          print(bcolors.cinza + str(distancias[i][1]), 'km ->', distancias[i][0] + bcolors.cor_normal)
+        elif distancias[i][1] < 10000 and distancias[i][1] >= 5000:
+          print(bcolors.roxo + str(distancias[i][1]), 'km ->', distancias[i][0] + bcolors.cor_normal)
+        elif distancias[i][1] < 5000 and distancias[i][1] >= 2000:
+          print(bcolors.vermelho + str(distancias[i][1]), 'km ->', distancias[i][0] + bcolors.cor_normal)
+        elif distancias[i][1] < 2000 and distancias[i][1] >= 1000:
+          print(bcolors.amarelo + str(distancias[i][1]), 'km ->', distancias[i][0] + bcolors.cor_normal)
+        elif distancias[i][1] < 1000:
+          print(bcolors.azul_claro + str(distancias[i][1]), 'km ->', distancias[i][0] + bcolors.cor_normal)
   
       print('\nDicas: ')
       for i in range(len(dicas)):
         print(dicas[i])
     inventario = False
 
-    print('\nVocê tem', tentativas, 'tentativa(s) \n')
+    print('\nVocê tem',tenta_cor, 'tentativa(s) \n')
     palpite = input('Qual o seu palpite? ').lower()
 
     esta = False
