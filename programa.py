@@ -11,7 +11,12 @@ raio_terra = 6371
 
 DADOS_CONVERTIDOS = normaliza(dicio_paises['DADOS'])
 
-
+class bcolors:
+  cinza = '\033[1;30m'
+  roxo = '\033[0;35m'
+  vermelho = '\033[0;31m'
+  amarelo = '\033[1;33m'
+  azul_claro = '\033[1;34m'
 print(' ============================ ')
 print('|                            |')
 print('| BEM VINDO AO INSPER PAÍSES |')
