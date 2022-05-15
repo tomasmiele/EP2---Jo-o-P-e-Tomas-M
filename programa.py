@@ -100,6 +100,7 @@ while continuar_jogando == True:
         continue
       elif desistir == 's':
         print('Que deselegante desistir, o pais era:', pais_sorteado)
+        ganhou = True #para imprimir apenas que o jogador desistiu
         break
       else:
         print('país desconhecido \n')
